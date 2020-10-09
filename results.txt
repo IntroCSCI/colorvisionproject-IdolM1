@@ -1,0 +1,5 @@
+Idol
+Can distinguish red.
+Can distinguish yellow.
+Can distinguish green.
+

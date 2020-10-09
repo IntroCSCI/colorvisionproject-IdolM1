@@ -1,12 +1,12 @@
-# !!!Replace with your unique project name!!!
+# Color Identification
 
 ## Description
 
-!!!Replace with a description of what your program does!!!
+The program is to find out what colors a person can and cannot distinguish. The user will enter a color for what they see at a traffic light with simple colors.
 
 ## Developer
 
-!!!Replace with your name!!!
+Idol Moua
 
 ## Example
 
@@ -20,27 +20,65 @@ g++ --std=c++11 main.cpp -o cvp
 Here is an example of the program running:
 
 ```
-!!!Replace with an example of the program running with user interaction!!!
+What is the color of the top light: red
+What is the color of the middle light: yellow
+What is the color of the bottom light: green
 ```
 
 ## C++ Guide
 
 ### Variables and Data Types
 
-!!!Replace with a summary and examples of how multiple variables have been used with a variety of data types and why they have been used effectively and appropriately!!!
+Three variables (top, mid, bottom) will store the color as entered and be dtermined if what was entered will match correctly. 
 
 ### Input and Output
 
-!!!Replace with a summary and examples of how input and output have been used effectively and appropriately!!!
+The user will be asked to input three colors for top, mid and bottom.
+
+    cout << "What is the color of the top light: ";
+    cin >> top;
 
 ### Decisions
 
-!!!Replace with a summary and examples of how multiple decision constructs have been used effectively and appropriately!!!
+If a color does not match the traffic light, the program will choose to write if a person can or cannot see that color for all three.
+
+    if(top != "red")
+    {
+    results << "Can not distinguish red, " << name << " sees " << top << ".\n";
+    }
+    else
+    {
+    results << "Can distinguish red.\n";
+    }
 
 ### Iteration
 
-!!!Replace with a summary and examples of how iteration has been used effectively and appropriately!!!
+If the user does not enter a basic color or mispells, they will be told to enter a basic color and have to renter again. 
+
+    do
+    {
+    cout << "What is the color of the top light: ";
+    cin >> top;
+    if (top != "red" && top != "yellow" && top != "orange" && top != "green" && top != "blue" && top != "purple")
+    {
+    cout << "Please enter a basic color, like from a rainbow.\n";
+    }
+    } while (top != "red" && top != "yellow" && top != "orange" && top != "green" && top != "blue" && top != "purple");
 
 ### File Input and Output
 
-!!!Replace with a summary and examples of how input and/or output of files have been used effectively and appropriately!!!
+What the user entered will be written and saved to a text file, stating if they can distinguish either of the three colors.
+
+    results.open("results.txt", ios::app);
+    cout << "Please enter your first name for saving results: ";
+    cin >> name;
+    results << name << endl;
+
+    if(top != "red")
+    {
+    results << "Can not distinguish red, " << name << " sees " << top << ".\n";
+    }
+    else
+    {
+    results << "Can distinguish red.\n";
+    }
