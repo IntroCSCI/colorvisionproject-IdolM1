@@ -31,6 +31,8 @@ What is the color of the bottom light: green
 
 Three variables (top, mid, bottom) will store the color as entered and be dtermined if what was entered will match correctly. 
 
+    string top, mid, bottom, name;
+
 ### Input and Output
 
 The user will be asked to input three colors for top, mid and bottom.
