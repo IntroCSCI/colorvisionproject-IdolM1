@@ -1,5 +1,70 @@
-Idol
+red
 Can distinguish red.
-Can distinguish yellow.
-Can distinguish green.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
+erer
+Can distinguish red.
+Can not distinguish yellow, erer sees red.
+Can not distinguish green, erer sees red.
+
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
 

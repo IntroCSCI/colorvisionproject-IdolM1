@@ -4,6 +4,10 @@
 
 The program is to find out what colors a person can and cannot distinguish. The user will enter a color for what they see at a traffic light with simple colors.
 
+#v0.2 Updates
+
+The program will now ask if you would like to alter the colors of the trafficlight. The user can choose the concentration of red, green, or blue from 0 to 255 to alter the color of the chosen light. 
+
 ## Developer
 
 Idol Moua
@@ -83,4 +87,58 @@ What the user entered will be written and saved to a text file, stating if they 
     else
     {
     results << "Can distinguish red.\n";
+    }
+
+### Arrays/Vectors
+  The array of three variables will hold the numerical value for red, green, and blue to be used in the bitmap. 
+
+    if(choice == "top")
+    {
+      cout << "Red concentration: ";
+      concentrateValue[0] = colorConcentrate();
+      cout << "Green concentration: ";
+      concentrateValue[1] = colorConcentrate();
+      cout << "Blue concentration: ";
+      concentrateValue[2] = colorConcentrate();
+      cout << "Please wait\n";
+      for (vertical = 0; vertical < 100; vertical++)
+      {
+        for(int horizontal = 0; horizontal < 100; horizontal++)
+        {
+          bmp = light.toPixelMatrix();
+          rgb = bmp [horizontal] [vertical];
+          rgb.red = concentrateValue[0];
+          rgb.blue = concentrateValue[1];
+          rgb.green = concentrateValue[2];
+          bmp [horizontal] [vertical] = rgb;
+          light.fromPixelMatrix(bmp);
+        }
+      }
+      cout << "Changed color\n";
+    }
+
+### Functions
+  Functions are used to remove simpler, lenthgy code out of int main. For the trueColor function would have to be used multiple times in the pregram but, as a function makes it easier to just type out the function instead.
+
+    void colorCheck(string);
+    bool trueColor(string);
+
+    void colorCheck(string color)
+    {
+      if (trueColor(color))
+      {
+        cout << "Please enter a basic color, like from a rainbow.\n";
+      }
+    }
+
+    bool trueColor(string color)
+    {
+      if(color != "red" && color != "yellow" && color != "orange" && color != "green" && color != "blue" && color != "purple")
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
