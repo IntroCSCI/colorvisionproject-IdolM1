@@ -73,8 +73,8 @@ int main()
           bmp = light.toPixelMatrix();
           rgb = bmp [horizontal] [vertical];
           rgb.red = concentrateValue[0];
-          rgb.blue = concentrateValue[1];
-          rgb.green = concentrateValue[2];
+          rgb.green = concentrateValue[1];
+          rgb.blue = concentrateValue[2];
           bmp [horizontal] [vertical] = rgb;
           light.fromPixelMatrix(bmp);
         }
@@ -97,8 +97,8 @@ int main()
           bmp = light.toPixelMatrix();
           rgb = bmp [horizontal] [vertical];
           rgb.red = concentrateValue[0];
-          rgb.blue = concentrateValue[1];
-          rgb.green = concentrateValue[2];
+          rgb.green = concentrateValue[1];
+          rgb.blue = concentrateValue[2];
           bmp [horizontal] [vertical] = rgb;
           light.fromPixelMatrix(bmp);
         }
@@ -121,8 +121,8 @@ int main()
           bmp = light.toPixelMatrix();
           rgb = bmp [horizontal] [vertical];
           rgb.red = concentrateValue[0];
-          rgb.blue = concentrateValue[1];
-          rgb.green = concentrateValue[2];
+          rgb.green = concentrateValue[1];
+          rgb.blue = concentrateValue[2];
           bmp [horizontal] [vertical] = rgb;
           light.fromPixelMatrix(bmp);
         }
