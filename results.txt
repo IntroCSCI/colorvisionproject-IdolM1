@@ -78,3 +78,8 @@ Can distinguish red.
 Can not distinguish yellow, red sees red.
 Can not distinguish green, red sees red.
 
+red
+Can distinguish red.
+Can not distinguish yellow, red sees red.
+Can not distinguish green, red sees red.
+
