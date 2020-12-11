@@ -8,6 +8,10 @@ The program is to find out what colors a person can and cannot distinguish. The 
 
 The program will now ask if you would like to alter the colors of the trafficlight. The user can choose the concentration of red, green, or blue from 0 to 255 to alter the color of the chosen light. 
 
+#v1.0 Updates
+
+The program will ask if the user would like to reset the colors of the traffictlight bit map before selecting their colors. The program now has a class that is used to recieve a chosen color and checks for a specific color, then will return the three choices.
+
 ## Developer
 
 Idol Moua
@@ -141,4 +145,29 @@ What the user entered will be written and saved to a text file, stating if they 
       {
         return false;
       }
+    }
+
+### Classes
+  The class is used for collecting color choices and determining if they are basic colors. The three color choices will be returned.
+
+    string color::choose(string list[3]){
+      do
+      {
+        cout << "What is the color of the top light: ";
+        cin >> topColor;
+      } while (trueColor(topColor));
+      list[0] = topColor;
+      do
+      {
+        cout << "What is the color of the middle light: ";
+        cin >> midColor;
+      }while (trueColor(midColor));
+      list[1] = midColor;
+      do
+      {
+        cout << "What is the color of the bottom light: ";
+        cin >> bottomColor;
+      } while (trueColor(bottomColor));  
+      list[2] = bottomColor;
+      return list[2];
     }

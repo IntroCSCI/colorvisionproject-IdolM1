@@ -2,16 +2,18 @@
 #include <fstream>
 #include "libraries/bitmap.h"
 #include <vector>
+#include "color.h"
 using namespace std;
 
-void colorCheck(string);
-bool trueColor(string);
-void writeFile(fstream &, string, string, string);
+void writeFile(fstream &, string[]);
 int colorConcentrate();
+void colorReset(Bitmap &, Pixel &, vector <vector <Pixel>> &);
 
 int main()
 {
-  string top, mid, bottom, choice;
+  color user;
+  string colorSeen [3];
+  string choice, input;
   int vertical = 0;
   int concentrateValue [3] = {0,0,0};
   fstream results;
@@ -19,28 +21,18 @@ int main()
   vector <vector <Pixel> > bmp;
   Pixel rgb;
 
+  light.open("trafficLight.bmp");
+  cout << "Do you want to reset the colors of the traffic light? type y to reset or type anything else to continue" << endl;
+  cin >> input;
+  if(input == "y")
+  {
+  colorReset(light, rgb, bmp);
+  }
+
   cout << "You stop at an intersection, what are the colors of the trsffic light using basic colors.\n";
-  do
-  {
-    cout << "What is the color of the top light: ";
-    cin >> top;
-    colorCheck(top);
-  } while (trueColor(top));
-
-  do
-  {
-    cout << "What is the color of the middle light: ";
-    cin >> mid;
-    colorCheck(mid);
-  }while (trueColor(mid));
-
-  do
-  {
-    cout << "What is the color of the bottom light: ";
-    cin >> bottom;
-    colorCheck(bottom);
-  } while (trueColor(bottom));  
-
+ 
+  colorSeen[2] = user.choose(colorSeen);
+  
   results.open("results.txt", ios::app);
   if (results.fail())
   {
@@ -48,10 +40,10 @@ int main()
     return 0;
   }
   
-  writeFile(results, top, mid, bottom);
+  writeFile(results, colorSeen);
   results.close();
   
-  light.open("trafficLight.bmp");
+  
   
   do
   {
@@ -114,7 +106,7 @@ int main()
       cout << "Blue concentration: ";
       concentrateValue[2] = colorConcentrate();
       cout << "Please wait\n";
-      for (vertical = 201; vertical < 300; vertical++)
+      for (vertical = 0; vertical < 100; vertical++)
       {
         for(int horizontal = 201; horizontal < 300; horizontal++)
         {
@@ -131,10 +123,11 @@ int main()
     }
   
     light.save("trafficLight.bmp");
- } while (choice != "quit");
+  } while (choice != "quit");
 
   return 0;
 }
+
 
 int colorConcentrate()
 {
@@ -148,55 +141,79 @@ int colorConcentrate()
 
 }
 
-void colorCheck(string color)
-{
-  if (trueColor(color))
-    {
-      cout << "Please enter a basic color, like from a rainbow.\n";
-    }
-}
-
-bool trueColor(string color)
-{
-  if(color != "red" && color != "yellow" && color != "orange" && color != "green" && color != "blue" && color != "purple")
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-void writeFile(fstream &results, string top, string mid, string bottom)
+void writeFile(fstream &results, string list[3])
 {
   string name;
   cout << "Please enter your first name for saving results: ";
   cin >> name;
   results << name << endl;
-  if(top != "red")
+  if(list[0] != "red")
   {
-    results << "Can not distinguish red, " << name << " sees " << top << ".\n";
+    results << "Can not distinguish red, " << name << " sees " << list[0] << ".\n";
   }
   else
   {
     results << "Can distinguish red.\n";
   }
-  if(mid != "yellow")
+  if(list[1] != "yellow")
   {
-    results << "Can not distinguish yellow, " << name << " sees " << mid << ".\n";
+    results << "Can not distinguish yellow, " << name << " sees " << list[1] << ".\n";
   }
   else
   {
     results << "Can distinguish yellow.\n";
   }
-  if(bottom != "green")
+  if(list[2] != "green")
   {
-    results << "Can not distinguish green, " << name << " sees " << bottom << ".\n";
+    results << "Can not distinguish green, " << name << " sees " << list[2] << ".\n";
   }
   else
   {
     results << "Can distinguish green.\n";
   }
   results << endl;
+}
+
+void colorReset(Bitmap & light, Pixel & rgb, vector <vector <Pixel>> &bmp)
+{
+  for (int vertical = 0; vertical < 100; vertical++)
+  {
+    for(int horizontal = 0; horizontal < 100; horizontal++)
+    {
+      bmp = light.toPixelMatrix();
+      rgb = bmp [horizontal] [vertical];
+      rgb.red = 255;
+      rgb.green = 0;
+      rgb.blue = 0;
+      bmp [horizontal] [vertical] = rgb;
+      light.fromPixelMatrix(bmp);
+    }
+  }
+  for (int vertical = 0; vertical < 100; vertical++)
+  {
+    for(int horizontal = 101; horizontal < 200; horizontal++)
+    {
+      bmp = light.toPixelMatrix();
+      rgb = bmp [horizontal] [vertical];
+      rgb.red = 255;
+      rgb.green = 255;
+      rgb.blue = 0;
+      bmp [horizontal] [vertical] = rgb;
+      light.fromPixelMatrix(bmp);
+    }
+  }
+  for (int vertical = 0; vertical < 100; vertical++)
+  {
+    for(int horizontal = 201; horizontal < 300; horizontal++)
+    {
+      bmp = light.toPixelMatrix();
+      rgb = bmp [horizontal] [vertical];
+      rgb.red = 0;
+      rgb.green = 255;
+      rgb.blue = 0;
+      bmp [horizontal] [vertical] = rgb;
+      light.fromPixelMatrix(bmp);
+    }
+  }
+  light.save("trafficLight.bmp");
 }
